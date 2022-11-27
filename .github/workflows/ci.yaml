@@ -19,6 +19,7 @@ jobs:
         os: [ubuntu-latest]
     name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v3
       - name: Setup Workspace
         uses: ./.github/action/pnpm
         with:
@@ -29,6 +30,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Setup Workspace
         uses: ./.github/action/pnpm
         with:
