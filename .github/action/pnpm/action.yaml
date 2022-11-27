@@ -16,15 +16,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Cache turbo
-      uses: actions/cache@v3
-      with:
-        path: .turbo
-        key: ${{ runner.os }}-turbo-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-turbo-
-
-    - uses: pnpm/action-setup@v2.2.2
+    - uses: pnpm/action-setup@v2
       with:
         version: ${{ inputs.pnpm-version }}
 
