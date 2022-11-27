@@ -34,6 +34,7 @@ jobs:
 
   changeset:
     name: Check if version upgrade
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
