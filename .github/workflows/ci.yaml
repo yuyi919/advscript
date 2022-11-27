@@ -1,5 +1,6 @@
 name: ci
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -19,17 +20,10 @@ jobs:
     name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Setup PNPM
+        uses: ./.github/actions/pnpm
         with:
-          version: 7
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "pnpm"
-      - name: Install dependencies
-        id: install_code
-        run: pnpm install --frozen-lockfile
+          run-install: true
       - run: pnpm test
 
   changeset:
@@ -37,17 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Setup PNPM
+        uses: ./.github/actions/pnpm
         with:
-          version: 7
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "pnpm"
-      - name: Install dependencies
-        id: install_code
-        run: pnpm install --frozen-lockfile
+          run-install: true
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
