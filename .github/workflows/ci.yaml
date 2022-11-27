@@ -1,6 +1,11 @@
 name: ci
 on:
   workflow_dispatch:
+    inputs:
+      UseTurboCache:
+        description: "使用turbo的缓存"
+        required: true
+        default: true
   push:
     branches:
       - main
@@ -33,6 +38,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Cache turbo
         uses: actions/cache@v3
+        if: github.event.inputs.UseTurboCache == 'true'
         with:
           path: node_modules/.cache/turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
