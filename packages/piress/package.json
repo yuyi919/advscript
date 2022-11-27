@@ -18,9 +18,11 @@
   "module": "dist/index.es.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "vite build --emptyOutDir=false",
+    "_build": "vite build --emptyOutDir=false",
+    "build": "pnpm build:dts && pnpm build:node",
     "build:dts": "dts-bundle-generator src/index.ts -o types/index.d.ts --silent --no-check --project=tsconfig.json",
     "build:node": "vite build --mode node --emptyOutDir=false",
+    "clean": "rimraf ./dist",
     "dev": "vite build --watch --emptyOutDir=false",
     "lint": "eslint *.ts*"
   },

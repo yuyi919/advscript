@@ -6,6 +6,8 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
+    "_build": "rescript build",
+    "clean": "rescript clean && rimraf src/**/*.gen.ts",
     "dev": "rescript build -with-deps -w"
   },
   "devDependencies": {

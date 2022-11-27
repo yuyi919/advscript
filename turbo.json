@@ -2,19 +2,20 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["build:dts", "^build"],
+      "dependsOn": ["_build", "^build"],
+      "outputs": ["dist/**", ".next/**", "lib/bs/**", "src/**/*.gen.ts"]
+    },
+    "_build": {
+      "dependsOn": ["^_build"],
       "outputs": ["dist/**", ".next/**", "lib/bs/**"]
     },
-    "build:dts": {
-      "dependsOn": ["^build:dts"],
-      "outputs": ["types/**"]
-    },
-    "build:node": {
-      "dependsOn": ["build", "^build:node"],
-      "outputs": ["dist/**", ".next/**"]
+    "clean": {
+      "outputs": [],
+      "cache": false
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "dev": {
       "cache": false
