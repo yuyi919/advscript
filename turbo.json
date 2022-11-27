@@ -17,6 +17,10 @@
       "outputs": [],
       "cache": false
     },
+    "test": {
+      "outputs": [],
+      "cache": false
+    },
     "dev": {
       "cache": false
     }

@@ -20,17 +20,19 @@ jobs:
     name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/action/pnpm
+      - name: Setup PNPM
+        uses: ./.github/action/pnpm
         with:
           run-install: true
       - run: pnpm test
 
   changeset:
-    name: Check if version upgrade
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/action/pnpm
+      - name: Setup PNPM
+        uses: ./.github/action/pnpm
         with:
           run-install: true
       - name: Create Release Pull Request or Publish to npm
