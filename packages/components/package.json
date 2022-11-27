@@ -1,6 +1,6 @@
 {
   "name": "@advscript/react-components",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "author": "yuyi919",
   "main": "dist/index.js",
@@ -12,12 +12,14 @@
   "scripts": {
     "lint": "eslint *.ts*"
   },
+  "dependencies": {
+    "piress-core": "workspace:0.0.4"
+  },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
-    "piress-core": "workspace:*",
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"

@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@changesets/changelog-git': ^0.1.13
+      '@changesets/changelog-github': ^0.4.7
       '@changesets/cli': ^2.25.2
       '@internal/test-utils': workspace:*
       '@types/lodash': ^4.14.186
@@ -15,12 +15,12 @@ importers:
       prettier: ^2.7.1
       prettier-plugin-organize-imports: ^3.0.0
       prettier-plugin-packagejson: ^2.2.18
-      turbo: latest
+      turbo: ^1.6.3
       typescript: ^4.5.2
       vite: ^3.1.7
       vitest: ^0.24.1
     devDependencies:
-      '@changesets/changelog-git': registry.npmmirror.com/@changesets/changelog-git/0.1.13
+      '@changesets/changelog-github': 0.4.7
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.25.2
       '@internal/test-utils': link:packages/test-utils
       '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.190
@@ -38,7 +38,6 @@ importers:
 
   apps/web:
     specifiers:
-      '@advscript/react-components': workspace:*
       '@babel/core': ^7.0.0
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
@@ -50,11 +49,12 @@ importers:
       react-dom: 18.2.0
       tsconfig: workspace:*
       typescript: ^4.5.3
+      ui: workspace:@advscript/react-components@*
     dependencies:
-      '@advscript/react-components': link:../../packages/components
       next: registry.npmmirror.com/next/13.0.0_mqvh5p7ejg4taogoj6tpk3gd5a
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      ui: link:../../packages/components
     devDependencies:
       '@babel/core': registry.npmmirror.com/@babel/core/7.20.2
       '@types/node': registry.npmmirror.com/@types/node/17.0.45
@@ -71,7 +71,7 @@ importers:
       '@types/react-dom': ^18.0.6
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
-      piress-core: workspace:*
+      piress-core: workspace:0.0.4
       react: ^18.2.0
       tsconfig: workspace:*
       typescript: ^4.5.2
@@ -205,6 +205,29 @@ importers:
     specifiers: {}
 
 packages:
+
+  /@changesets/changelog-github/0.4.7:
+    resolution: {integrity: sha512-UUG5sKwShs5ha1GFnayUpZNcDGWoY7F5XxhOEHS62sDPOtoHQZsG3j1nC5RxZ3M1URHA321cwVZHeXgu99Y3ew==}
+    dependencies:
+      '@changesets/get-github-info': 0.5.1
+      '@changesets/types': 5.2.0
+      dotenv: 8.6.0
+    transitivePeerDependencies:
+      - encoding
+    dev: true
+
+  /@changesets/get-github-info/0.5.1:
+    resolution: {integrity: sha512-w2yl3AuG+hFuEEmT6j1zDlg7GQLM/J2UxTmk0uJBMdRqHni4zXGe/vUlPfLom5KfX3cRfHc0hzGvloDPjWFNZw==}
+    dependencies:
+      dataloader: 1.4.0
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: true
+
+  /@changesets/types/5.2.0:
+    resolution: {integrity: sha512-km/66KOqJC+eicZXsm2oq8A8bVTSpkZJ60iPV/Nl5Z5c7p9kk8xxh6XGRTlnludHldxOOfudhnDN2qPxtHmXzA==}
+    dev: true
 
   /@esbuild/android-arm/0.15.15:
     resolution: {integrity: sha512-JJjZjJi2eBL01QJuWjfCdZxcIgot+VoK6Fq7eKF9w4YHm9hwl7nhBR1o2Wnt/WcANk5l9SkpvrldW1PLuXxcbw==}
@@ -340,6 +363,15 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /dataloader/1.4.0:
+    resolution: {integrity: sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==}
+    dev: true
+
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
+    dev: true
 
   /esbuild-android-64/0.15.15:
     resolution: {integrity: sha512-F+WjjQxO+JQOva3tJWNdVjouFMLK6R6i5gjDvgUthLYJnIZJsp1HlF523k73hELY20WPyEO8xcz7aaYBVkeg5Q==}
@@ -552,6 +584,22 @@ packages:
     dev: true
     optional: true
 
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: true
+
+  /tr46/0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: true
+
   /turbo-darwin-64/1.6.3:
     resolution: {integrity: sha512-QmDIX0Yh1wYQl0bUS0gGWwNxpJwrzZU2GIAYt3aOKoirWA2ecnyb3R6ludcS1znfNV2MfunP+l8E3ncxUHwtjA==}
     cpu: [x64]
@@ -611,6 +659,17 @@ packages:
       turbo-linux-arm64: 1.6.3
       turbo-windows-64: 1.6.3
       turbo-windows-arm64: 1.6.3
+    dev: true
+
+  /webidl-conversions/3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: true
+
+  /whatwg-url/5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
     dev: true
 
   registry.npmmirror.com/@ampproject/remapping/2.2.0:
