@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig/react-library.json",
+  "include": [
+    "piress-core-shared/env.d.ts",
+    "piress-core-shared/helper/measureText/env.d.ts",
+    "src"
+  ],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "paths": {
+      "piress-core-rescript/*": ["./rescript/*"],
+      "piress-core-rescript": ["./rescript/src/index.ts"],
+      "piress-core-shared": ["./shared/index.ts"]
+    },
+    "types": ["vite/client", "vitest/globals", "@types/offscreencanvas"]
+  }
+}

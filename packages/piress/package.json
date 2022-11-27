@@ -1,0 +1,44 @@
+{
+  "name": "piress-core",
+  "version": "0.0.2",
+  "license": "MIT",
+  "author": "yuyi919",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "node": "./dist/index.cjs.node.js",
+      "require": "./dist/index.cjs.js",
+      "module": "./dist/index.es.js",
+      "es2015": "./dist/index.es.js",
+      "default": "./dist/index.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.cjs.node.js",
+  "module": "dist/index.es.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "vite build --emptyOutDir=false",
+    "build:dts": "dts-bundle-generator src/index.ts -o types/index.d.ts --silent --no-check --project=tsconfig.json",
+    "build:node": "vite build --mode node --emptyOutDir=false",
+    "dev": "vite build --watch --emptyOutDir=false",
+    "lint": "eslint *.ts*"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.186",
+    "@types/node": "^17.0.12",
+    "@types/offscreencanvas": "^2019.7.0",
+    "@yuyi919/shared-logger": "^0.0.20",
+    "canvas": "^2.9.3",
+    "dts-bundle-generator": "^7.1.0",
+    "piress-core-rescript": "workspace:*",
+    "piress-core-shared": "workspace:*",
+    "terser": "^5.15.1",
+    "tsconfig": "workspace:*",
+    "tslib": "^2.4.0",
+    "typescript": "^4.5.2",
+    "vite": "^3.1.7",
+    "vitest": "^0.24.1",
+    "xregexp": "^5.1.1"
+  }
+}

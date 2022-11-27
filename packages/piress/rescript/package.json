@@ -1,0 +1,20 @@
+{
+  "name": "piress-core-rescript",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "dev": "rescript build -with-deps -w"
+  },
+  "devDependencies": {
+    "@rescript/std": "^10.0.1",
+    "gentype": "^4.5.0",
+    "piress-core-shared": "workspace:*",
+    "reanalyze": "^2.23.0",
+    "rescript": "~10.0.1",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.2"
+  }
+}

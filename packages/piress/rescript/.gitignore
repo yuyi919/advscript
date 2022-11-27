@@ -1,0 +1,4 @@
+lib/bs
+/**/*.bs.js
+/**/*.gen.ts
+.bsb.lock

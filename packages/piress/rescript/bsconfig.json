@@ -1,0 +1,44 @@
+{
+  "name": "CCCame",
+  "bsc-flags": [
+    "-bs-super-errors",
+    "-bs-no-version-header",
+    "-bs-cross-module-opt"
+  ],
+  "jsx": {
+    "mode": "automatic",
+    "version": 4
+  },
+  "warnings": {
+    "number": "-32-60"
+  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "ppx-flags": [],
+  "reason": {},
+  "external-stdlib": "@rescript/std",
+  "suffix": ".bs.js",
+  "bs-dependencies": [],
+  "gentypeconfig": {
+    "importPath": "relative",
+    "generatedFileExtension": ".gen.ts",
+    "shims": {
+      "Js": "Js",
+      "ReactEvent": "ReactEvent",
+      "RescriptPervasives": "RescriptPervasives",
+      "ReasonReact": "ReactShim"
+    },
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  }
+}

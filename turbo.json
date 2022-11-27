@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["build:dts", "^build"],
+      "outputs": ["dist/**", ".next/**", "lib/bs/**"]
+    },
+    "build:dts": {
+      "dependsOn": ["^build:dts"],
+      "outputs": ["types/**"]
+    },
+    "build:node": {
+      "dependsOn": ["build", "^build:node"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}

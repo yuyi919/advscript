@@ -1,0 +1,22 @@
+{
+  "name": "piress-core-shared",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "lint": "eslint *.ts*"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/offscreencanvas": "^2019.7.0",
+    "@yuyi919/shared-logger": "^0.0.20",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "lodash": "^4.17.21",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.2",
+    "xregexp": "^5.1.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "declarationDir": "./types",
+    "types": ["vite/client", "vitest/globals", "@types/node"],
+    "lib": ["ESNEXT", "DOM", "ES2015.Iterable"]
+  },
+  "include": ["./src"],
+  "exclude": ["./**/*.spec.ts", "./**/*.test.ts"]
+}
