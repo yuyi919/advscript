@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action
-name: Setup Node and pnpm
+name: Setup Workspace
 inputs:
   node-version:
     required: true
@@ -16,6 +16,15 @@ inputs:
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v3
+    - name: Cache turbo build setup
+      uses: actions/cache@v3
+      with:
+        path: .turbo
+        key: ${{ runner.os }}-turbo-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-turbo-
+
     - uses: pnpm/action-setup@v2.2.2
       with:
         version: ${{ inputs.pnpm-version }}
@@ -25,19 +34,6 @@ runs:
         node-version: ${{ inputs.node-version }}
         registry-url: ${{ inputs.registry-url }}
         cache: "pnpm"
-
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
 
     - run: pnpm install --frozen-lockfile
       shell: bash
